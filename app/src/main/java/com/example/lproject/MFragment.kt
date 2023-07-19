@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.lproject.base.BaseFragment
 import com.example.lproject.data.WxArticleBean
+import com.example.lproject.databinding.FragmentMBinding
 import com.example.lproject.ktx.argument
 import com.example.lproject.ktx.argumentNullable
+import com.example.lproject.ktx.viewBinding
 
 /**
  * author: ZK.
@@ -13,6 +15,7 @@ import com.example.lproject.ktx.argumentNullable
  */
 class MFragment : BaseFragment(R.layout.fragment_m) {
 
+    private val binding by viewBinding(FragmentMBinding::bind)
     private var wxarticle: String by argument()
 
     companion object {
@@ -23,14 +26,12 @@ class MFragment : BaseFragment(R.layout.fragment_m) {
 
 
     override fun onViewCreated(savedInstanceState: Bundle?) {
-        val tvTest = requireView().findViewById<TextView>(R.id.tv_test)
-        tvTest.text = wxarticle.toString()
+        binding.tvTest.text = wxarticle
     }
 
 
-    fun  setWxArticleBean(wxArticleBean: String){
-        val tvTest = requireView().findViewById<TextView>(R.id.tv_test)
+    fun setWxArticleBean(wxArticleBean: String) {
         wxarticle = wxArticleBean
-        tvTest.text = wxarticle
+        binding.tvTest.text = wxarticle
     }
 }
