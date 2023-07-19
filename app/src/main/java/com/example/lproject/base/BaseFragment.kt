@@ -13,8 +13,7 @@ import androidx.fragment.app.Fragment
  * author: ZK.
  * date:   On 2023-07-12.
  */
-abstract class BaseFragment() : Fragment(), IUiView {
-
+abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId), IUiView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -27,4 +26,11 @@ abstract class BaseFragment() : Fragment(), IUiView {
     }
 
     protected abstract fun onViewCreated(savedInstanceState: Bundle?)
+
+    override fun showLoading() {
+    }
+
+    override fun dismissLoading() {
+    }
+
 }

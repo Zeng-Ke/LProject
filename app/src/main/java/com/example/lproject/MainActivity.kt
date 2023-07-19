@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import com.example.lproject.base.BaseActivity
 import com.example.lproject.data.WxArticleBean
 import com.example.lproject.databinding.ActivityMainBinding
+import com.example.lproject.ktx.argument
 import com.example.lproject.ktx.collectIn
 import com.example.lproject.ktx.launchWithLoading
 import com.example.lproject.net.ResultBuilder
@@ -24,12 +25,18 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.tvTest.text = "sssss"
+
+        val mFragment = MFragment.newInstance("MFragment.newInstance")
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container_view,mFragment).commit()
+
+
         val builder = ResultBuilder<List<WxArticleBean>>()
 
         viewModel.uiState.collectIn(this) {
             Log.d("=======","2")
             onSuccess = {
-                binding.tvTest.text = it.toString()
+                binding.tvTest.text = it.toString()+"\n\n\n"
+                mFragment.setWxArticleBean(it.toString())
             }
             onFailed = { code, msg ->
                 binding.tvTest.text = msg

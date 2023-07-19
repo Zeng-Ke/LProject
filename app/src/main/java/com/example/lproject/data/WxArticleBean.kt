@@ -1,12 +1,14 @@
 package com.example.lproject.data
 
+import java.io.Serializable
+
 /**
  * author : wutao
  * time   : 2020/01/01
  * desc   :
  * version: 1.0
  */
-class WxArticleBean {
+class WxArticleBean :Serializable{
     /**
      * id : 408
      * name : 鸿洋
