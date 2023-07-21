@@ -1,9 +1,11 @@
 package com.example.lproject.base
 
 import android.app.Application
+import androidx.databinding.library.BuildConfig
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.blankj.utilcode.util.Utils
 
 /**
  * author: ZK.
@@ -21,9 +23,13 @@ class BaseApp : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
+        initTools()
         //监听App的生命周期
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
+    }
+
+    private fun initTools() {
+        Utils.init(instance)
     }
 
 
