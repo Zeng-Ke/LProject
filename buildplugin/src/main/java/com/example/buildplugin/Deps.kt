@@ -14,8 +14,9 @@ object Deps {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.3"
     const val databinding = "androidx.databinding:databinding-runtime:7.1.2"
     const val activityKtx = "androidx.activity:activity-ktx:1.5.1"
-    const val utilcodex = "com.blankj:utilcodex:1.31.1"
+    const val utilcodex = "com.blankj:utilcodex:1.31.1"  //https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
     const val gson = "com.google.code.gson:gson:2.8.6"
+    const val screenAutosize = "me.jessyan:autosize:1.2.1" //https://github.com/JessYanCoding/AndroidAutoSize
 
 
     // lifecycle

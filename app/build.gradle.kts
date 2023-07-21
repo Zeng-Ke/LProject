@@ -65,6 +65,7 @@ dependencies {
     implementation(Deps.activityKtx)
     implementation(Deps.utilcodex)
     implementation(Deps.gson)
+    implementation(Deps.screenAutosize)
 
     http()
     lifecycle()

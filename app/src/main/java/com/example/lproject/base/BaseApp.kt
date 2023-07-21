@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.Utils
  * author: ZK.
  * date:   On 2023-07-12.
  */
-class BaseApp : Application() {
+open  class BaseApp : Application() {
 
     companion object {
         private lateinit var instance: BaseApp
