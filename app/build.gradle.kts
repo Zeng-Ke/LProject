@@ -8,8 +8,8 @@ plugins {
 
 
 android {
-    namespace = "com.example.lproject"
-    compileSdk = 33
+    namespace =BuildCf.applicationId
+    compileSdk = BuildCf.compileSdk
 
     defaultConfig {
         applicationId = BuildCf.applicationId
@@ -66,6 +66,7 @@ dependencies {
     implementation(Deps.utilcodex)
     implementation(Deps.gson)
     implementation(Deps.screenAutosize)
+    implementation(Deps.jsbridge)
 
     http()
     lifecycle()

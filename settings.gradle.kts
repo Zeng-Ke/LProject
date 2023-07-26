@@ -5,6 +5,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven { setUrl("https://maven.aliyun.com/nexus/content/groups/public/") }
+
     }
 }
 dependencyResolutionManagement {
@@ -13,6 +14,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { setUrl("https://maven.aliyun.com/nexus/content/groups/public/") }
+        maven { setUrl( "https://jitpack.io" )}
     }
 }
 rootProject.name = "LProject"
