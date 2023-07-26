@@ -1,11 +1,8 @@
 package com.example.lproject
 
-import android.app.Activity
 import android.app.Application
-import androidx.viewpager.widget.ViewPager.OnAdapterChangeListener
-import com.blankj.utilcode.util.LogUtils
+import com.example.lproject.base.webview.WebViewPool
 import me.jessyan.autosize.AutoSizeConfig
-import me.jessyan.autosize.onAdaptListener
 import me.jessyan.autosize.unit.Subunits
 
 /**
@@ -16,6 +13,7 @@ object AppInitUtils {
 
     fun  init(application: Application){
         configScreenAdaptUnits()
+        WebViewPool.instance.init()
     }
 
     /**
