@@ -17,9 +17,13 @@ abstract  class BaseActivity : AppCompatActivity(),IUiView {
     }
 
     override fun showLoading() {
+
     }
 
     override fun dismissLoading() {
+    }
+
+    override fun onException(t: Throwable) {
     }
 
 

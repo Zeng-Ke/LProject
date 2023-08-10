@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.example.lproject.toast
 
 /**
  * author: ZK.
@@ -31,6 +30,10 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
     }
 
     override fun dismissLoading() {
+    }
+
+    override fun onException(t: Throwable) {
+       toast(t.message.toString())
     }
 
 }

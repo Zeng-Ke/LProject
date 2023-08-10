@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="500mm"
+        android:textSize="30mm"
         android:background="@android:color/holo_blue_dark"
         android:layout_height="200mm"/>
 

@@ -33,9 +33,7 @@ class MFragment : BaseFragment(R.layout.fragment_m) {
     override fun onViewCreated(savedInstanceState: Bundle?) {
         binding.tvTest.text = wxarticle
 
-        LogUtils.dTag("====",AutoSizeUtils.mm2px(BaseApp.getInstance(),500f))
-        LogUtils.dTag("====",100.mm2px() )
-        LogUtils.dTag("====",100.px2mm())
+
     }
 
 

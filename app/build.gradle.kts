@@ -21,7 +21,6 @@ android {
 
     }
 
-    //或者gradle plugin 7.0以上也可以用如下写法
     buildFeatures {
         viewBinding = true
         buildConfig = true

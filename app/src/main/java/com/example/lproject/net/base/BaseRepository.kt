@@ -1,22 +1,21 @@
 package com.example.lproject.net.base
 
-import android.util.Log
+import com.blankj.utilcode.util.LogUtils
 import com.example.lproject.BuildConfig
 import com.example.lproject.net.entity.ApiEmptyResponse
 import com.example.lproject.net.entity.ApiErrorResponse
 import com.example.lproject.net.entity.ApiFailedResponse
 import com.example.lproject.net.entity.ApiResponse
 import com.example.lproject.net.entity.ApiSuccessResponse
-import kotlinx.coroutines.delay
 
 open class BaseRepository {
 
     suspend fun <T> executeHttp(block: suspend () -> ApiResponse<T>): ApiResponse<T> {
         //for test
         runCatching {
-            Log.d("=======-1",Thread.currentThread().toString())
             block.invoke()
         }.onSuccess { data: ApiResponse<T> ->
+            LogUtils.iTag("http", data.toString())
             return handleHttpOk(data)
         }.onFailure { e ->
             return handleHttpError(e)

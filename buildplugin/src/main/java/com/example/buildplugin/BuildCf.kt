@@ -12,7 +12,8 @@ object BuildCf {
 
     const val applicationId = "com.example.lproject"
     const val minSdk = 23
-    const val targetSdk = 33
+    const val targetSdk = 32
+    const val compileSdk = 32
 
 
 }

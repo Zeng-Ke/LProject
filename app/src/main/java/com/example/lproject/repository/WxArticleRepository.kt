@@ -1,6 +1,6 @@
 package com.example.lproject.repository
 
-import android.util.Log
+import com.example.lproject.data.ArticleListBean
 import com.example.lproject.data.WxArticleBean
 import com.example.lproject.net.RetrofitClient
 import com.example.lproject.net.base.BaseRepository
@@ -14,10 +14,14 @@ class WxArticleRepository : BaseRepository() {
 
     suspend fun fetchWxArticleFromNet(): ApiResponse<List<WxArticleBean>> {
         return executeHttp {
-            Log.d("=======0", Thread.currentThread().toString())
             mService.getWxArticle()
         }
     }
+
+    suspend fun fetchWxArticleList(pageNo: Int, pageSize: Int): ApiResponse<ArticleListBean> {
+        return executeHttp { mService.getArticleList(pageNo, pageSize) }
+    }
+
 
     suspend fun fetchWxArticleError(): ApiResponse<List<WxArticleBean>> {
         return executeHttp {

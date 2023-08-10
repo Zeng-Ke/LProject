@@ -9,18 +9,32 @@
 
     <TextView
         android:id="@+id/tv_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="200mm"
         android:text="Hello World!"
+        android:textSize="32mm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="300mm"
+        android:background="@android:color/holo_blue_light"
+        android:layout_gravity="center"
+        android:textSize="50mm" />
+
     <com.example.lproject.MView
         android:id="@+id/view_m"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp">
+
+
+
+    </com.example.lproject.MView>
 
 
     <androidx.fragment.app.FragmentContainerView

@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 object Deps {
 
     const val androidx = "androidx.appcompat:appcompat:1.4.1"
-    const val androidxCoreKtx = "androidx.core:core-ktx:1.9.0"
+    const val androidxCoreKtx = "androidx.core:core-ktx:1.8.0"
     const val material = "com.google.android.material:material:1.5.0"
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.3"
     const val databinding = "androidx.databinding:databinding-runtime:7.1.2"
@@ -17,6 +17,7 @@ object Deps {
     const val utilcodex = "com.blankj:utilcodex:1.31.1"  //https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
     const val gson = "com.google.code.gson:gson:2.8.6"
     const val screenAutosize = "me.jessyan:autosize:1.2.1" //https://github.com/JessYanCoding/AndroidAutoSize
+    const val jsbridge = "com.github.lzyzsd:jsbridge:1.0.4" //https://github.com/lzyzsd/JsBridge
 
 
     // lifecycle

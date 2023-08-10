@@ -3,17 +3,22 @@ package com.example.lproject
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.lproject.base.BaseActivity
-import com.example.lproject.data.WxArticleBean
 import com.example.lproject.databinding.ActivityMainBinding
-import com.example.lproject.ktx.argument
-import com.example.lproject.ktx.collectIn
-import com.example.lproject.ktx.launchWithLoading
+import com.example.lproject.ktx.applicationViewModels
 import com.example.lproject.ktx.viewBinding
-import com.example.lproject.net.ResultBuilder
+import com.example.lproject.viewmodel.AppGlobalViewModel
 import com.example.lproject.viewmodel.MainViewModel
+import com.yixinli.base.mvvm.collectIn
+import com.yixinli.base.mvvm.collectWithBuilder
+import com.yixinli.base.mvvm.launchWithLoading
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity() {
 
@@ -21,6 +26,7 @@ class MainActivity : BaseActivity() {
     //private lateinit var binding: ActivityMainBinding
     private val binding by viewBinding(ActivityMainBinding::bind)
     private val viewModel: MainViewModel by viewModels()
+    private val  appModel: AppGlobalViewModel by applicationViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +34,23 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         binding.tvTest.text = "sssss"
 
-        val mFragment = MFragment.newInstance("MFragment.newInstance")
+        val mFragment = MFragment.newInstance("MFragment.newInstance2222222")
         supportFragmentManager.beginTransaction().add(R.id.fragment_container_view, mFragment).commit()
 
-
-        val builder = ResultBuilder<List<WxArticleBean>>()
-
-        viewModel.uiState.collectIn(this) {
-            Log.d("=======", "2")
+        viewModel.uiState.collectWithBuilder(this) {
             onSuccess = {
                 binding.tvTest.text = it.toString() + "\n\n\n"
                 mFragment.setWxArticleBean(it.toString())
+            }
+        }
+        viewModel.myTitleState.collectIn(this) {
+            binding.tv2.text = this
+        }
+
+        viewModel.articleAllListBeanState.collectWithBuilder(this) {
+            onSuccess = {
+                binding.tvTest.text = it.toString() + "\n\n\n"
+                //mFragment.setWxArticleBean(it.toString())
             }
             onFailed = { code, msg ->
                 binding.tvTest.text = msg
@@ -49,22 +61,39 @@ class MainActivity : BaseActivity() {
         }
 
         binding.viewM.setOnClickListener {
-            MDialogFragment().show(supportFragmentManager,MDialogFragment::class.java.name)
+            MDialogFragment().show(supportFragmentManager, MDialogFragment::class.java.name)
             binding.viewM.setContent("viewM")
         }
 
         binding.tvTest.setOnClickListener {
-            launchWithLoading(viewModel::request)
+            // launchWithLoading(viewModel::request)
+            //ActivityUtils.startActivity(SecondActivity::class.java)
+
+            launchWithLoading {
+                viewModel.requestArticleList(true)
+            }
+
         }
-        test("a") {
-            it + "11"
-        }
+    }
+
+    fun te(s: String) {
+        Log.d("=====${Thread.currentThread()}", s)
     }
 
 
     fun test(str: String, m: (String) -> String) {
-        Log.d("==", m.invoke(str))
-        Log.d("==", m(str))
+        val job = lifecycleScope.launch {
+            flow {
+                delay(100)
+                //  1/0
+                emit("hahhha")
+            }.flowOn(Dispatchers.IO)
+                .onCompletion {
+                    Log.d("=====${Thread.currentThread()}", "${this}====${it.toString()}")
+                }.collect {
+                    Log.d("=====${Thread.currentThread()}", it)
+                }
+        }
 
     }
 }

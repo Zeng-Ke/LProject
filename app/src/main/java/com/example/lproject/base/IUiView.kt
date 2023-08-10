@@ -7,4 +7,6 @@ interface IUiView : LifecycleOwner {
     fun showLoading()
 
     fun dismissLoading()
+
+    fun  onException(t:Throwable)
 }
