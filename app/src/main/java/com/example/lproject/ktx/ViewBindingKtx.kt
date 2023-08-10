@@ -42,6 +42,7 @@ inline fun <V : ViewBinding> ComponentActivity.viewBinding(
     viewBinder(viewProvider(activity))
 }
 
+
 @JvmName("viewBindingActivity")
 inline fun <V : ViewBinding> ComponentActivity.viewBinding(
     crossinline viewBinder: (View) -> V,
@@ -49,6 +50,7 @@ inline fun <V : ViewBinding> ComponentActivity.viewBinding(
 ): ViewBindingProperty<ComponentActivity, V> = ActivityViewBindingProperty { activity: ComponentActivity ->
     viewBinder(activity.requireViewByIdCompat(viewBindingRootId))
 }
+
 
 // -------------------------------------------------------------------------------------
 // ViewBindingProperty for Fragment / DialogFragment
